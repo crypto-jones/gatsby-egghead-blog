@@ -22,15 +22,22 @@ exports.createPages = ({ graphql, actions }) => {
           }
         `
       ).then(result => {
+        if (result.errors) {
+          throw result.errors
+        }
+
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           const path = node.frontmatter.path
+          console.log("PATH", path)
           createPage({
             path,
             component: blogPostTemplate,
             context: {
               pathSlug: path,
             },
-          }).resolve()
+          })
+
+          resolve()
         })
       })
     )
