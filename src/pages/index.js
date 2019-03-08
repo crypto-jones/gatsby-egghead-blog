@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Header from "../components/header"
@@ -12,7 +12,11 @@ const IndexPage = ({ data }) => {
       <Header />
       {edges.map(edge => {
         const { frontmatter } = edge.node
-        return <h3 key={frontmatter.path}>{frontmatter.title}</h3>
+        return (
+          <h4 key={frontmatter.path}>
+            <Link to={frontmatter.path}>{frontmatter.title}</Link>
+          </h4>
+        )
       })}
     </Layout>
   )
