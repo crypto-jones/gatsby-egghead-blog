@@ -19,26 +19,27 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            author
           }
         }
       }
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <div
           style={{
             margin: `0 auto`,
             maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
+            padding: `1rem 1.0875rem 1.45rem`,
+            textAlign: `center`,
           }}
         >
           <main>{children}</main>
           <footer>
-            © {new Date().getFullYear()}, Built with
+            © {new Date().getFullYear()}, Built by
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <div>{data.site.siteMetadata.author}</div>
           </footer>
         </div>
       </>
