@@ -18,6 +18,10 @@ const IndexPage = ({ data }) => {
           </h4>
         )
       })}
+
+      <div>
+        <Link to="/tags">Browse By Tag</Link>
+      </div>
     </Layout>
   )
 }
